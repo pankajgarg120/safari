@@ -1,0 +1,14 @@
+<View className="w-full relative" style={{ height }}>
+    <Video
+        source={require("../assets/j1.mp4")}
+        shouldPlay
+        isLooping
+        isMuted={true}
+        resizeMode="cover"
+        useNativeControls={Platform.OS === "web"} // Web-specific controls
+        style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover", // Needed for Expo Web
+        }}
+    />
