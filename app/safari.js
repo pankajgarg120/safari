@@ -140,120 +140,124 @@ export default function SafariPage() {
     };
 
     return (
-        <ImageBackground
-            source={require("../assets/junglesafaribg.jpg")}
-            resizeMode="cover"
-            className="flex-1"
-        >
-            <View className="flex-1 bg-black/40">
-                <ScrollView className="flex-1 px-4 pt-24 space-y-6">
-                    <View className="flex-row items-center justify-between mb-4 px-2">
-                        <TouchableOpacity onPress={() => Linking.openURL("https://instagram.com/tigerindiasafari")}>
-                            <Image source={require("../assets/icons/instagram.png")} style={{ width: 40, height: 40 }} />
-                        </TouchableOpacity>
-                        <Text className="text-3xl font-extrabold text-white text-center flex-1">Explore Our Jungle Safaris</Text>
-                        <TouchableOpacity onPress={() => Linking.openURL("https://facebook.com")}>
-                            <Image source={require("../assets/icons/facebook.png")} style={{ width: 40, height: 40 }} />
-                        </TouchableOpacity>
-                    </View>
-
-                    <Text className="text-white text-base text-justify px-2">
-                        Embark on a thrilling journey through India's most breathtaking wildlife destinations...
-                    </Text>
-
-                    <View className="flex-row justify-between items-start px-2">
-                        <View className="space-y-3 flex-1 pr-4">
-                            {safaris.map((safari, index) => (
-                                <TouchableOpacity key={index} onPress={() => openSafariModal(safari)}>
-                                    <Text className="text-lg font-semibold text-white">🐾 {safari}</Text>
-                                </TouchableOpacity>
-                            ))}
+        <View className="flex-1">
+            <ImageBackground
+                source={require("../assets/junglesafaribg.jpg")}
+                style={{
+                    flex: 1,
+                }}
+                resizeMode="cover"
+            >
+                <View className="flex-1 bg-black/40">
+                    <ScrollView className="flex-1 px-4 pt-24 space-y-6">
+                        <View className="flex-row items-center justify-between mb-4 px-2">
+                            <TouchableOpacity onPress={() => Linking.openURL("https://instagram.com/tigerindiasafari")}>
+                                <Image source={require("../assets/icons/instagram.png")} style={{ width: 40, height: 40 }} />
+                            </TouchableOpacity>
+                            <Text className="text-3xl font-extrabold text-white text-center flex-1">Explore Our Jungle Safaris</Text>
+                            <TouchableOpacity onPress={() => Linking.openURL("https://www.facebook.com/share/16S6JJGNyv/")}>
+                                <Image source={require("../assets/icons/facebook.png")} style={{ width: 40, height: 40 }} />
+                            </TouchableOpacity>
                         </View>
-                        <Image
-                            source={require("../assets/tiger/tigers.jpg")}
-                            style={{ width: screenWidth * 0.45, height: 200, borderRadius: 10 }}
-                            resizeMode="cover"
-                        />
-                    </View>
 
-                    <View className="bg-yellow-100/90 p-4 rounded-lg mt-8">
-                        <Text className="text-xl font-bold text-orange-800 mb-2">🌿 Ranthambore Special</Text>
-                        <Text className="text-gray-900 text-base text-justify">
-                            Famous for its Bengal Tigers and historic fort...
+                        <Text className="text-white text-base text-justify px-2">
+                            Embark on a thrilling journey through India's most breathtaking wildlife destinations...
                         </Text>
-                    </View>
 
-                    <View className="items-center space-y-4 mt-6">
-                        <Text className="text-xl font-bold text-yellow-300">A Glimpse into the Wild</Text>
-                        <View className="flex-row items-start space-x-4">
-                            <Image source={require("../assets/tiger/tiger1.jpg")} style={{ width: 300, height: 300, borderRadius: 12 }} />
-                            <Text className="text-black text-sm p-4 bg-white/80 rounded-xl w-[300px] text-justify">
-                                “Every roar echoes through the forest...”
-                                {"\n"}
-                                “Whispers of the jungle dance in the wind…”
-                                {"\n"}
-                                “Each paw print tells a tale of the untamed…”
-                                {"\n"}
-                                “The heartbeat of the wild pulses beneath the trees…”
-                                {"\n"}
-                                “Sunlight filters through leaves, casting shadows of legends…”
-                                {"\n"}
-                                “Nature watches, ancient and alive…”
-                                {"\n"}
-                                “Eyes in the dark, fierce and knowing…"
-                                {"\n"}
-                                “The jungle breathes in rhythm with the wild…”
-                            </Text>
-                            <Image source={require("../assets/tiger/tiger12.jpg")} style={{ width: 300, height: 300, borderRadius: 12 }} />
-                        </View>
-                    </View>
-                </ScrollView>
-
-                {/* Modal */}
-                <Modal
-                    visible={modalVisible}
-                    transparent
-                    animationType="slide"
-                    onRequestClose={() => setModalVisible(false)}
-                >
-                    <View className="flex-1 bg-black/90 items-center justify-center p-4">
-                        <Text className="text-xl font-bold text-white mb-2">{selectedSafari}</Text>
-
-                        {selectedSafari && safariDetails[selectedSafari] && (
-                            <ScrollView className="bg-white/90 p-4 rounded-xl w-full max-h-[70%] mb-3">
-                                <Text className="text-black font-semibold text-base mb-1">🗺️ Zone Details:</Text>
-                                <Text className="text-black text-sm leading-6">{safariDetails[selectedSafari].zones}</Text>
-
-                                <Text className="mt-3 text-black font-semibold">🌅 Morning Safari:</Text>
-                                <Text className="text-black text-sm">{safariDetails[selectedSafari].timings.morning}</Text>
-
-                                <Text className="mt-2 text-black font-semibold">🌇 Evening Safari:</Text>
-                                <Text className="text-black text-sm">{safariDetails[selectedSafari].timings.evening}</Text>
-                            </ScrollView>
-                        )}
-
-                        {selectedSafari && safariData[selectedSafari] && (
-                            <ScrollView horizontal className="mt-2 space-x-3 max-h-[200px]">
-                                {safariData[selectedSafari].map((img, idx) => (
-                                    <Image
-                                        key={idx}
-                                        source={img}
-                                        style={{ width: 200, height: 200, borderRadius: 10 }}
-                                        resizeMode="cover"
-                                    />
+                        <View className="flex-row justify-between items-start px-2">
+                            <View className="space-y-3 flex-1 pr-4">
+                                {safaris.map((safari, index) => (
+                                    <TouchableOpacity key={index} onPress={() => openSafariModal(safari)}>
+                                        <Text className="text-lg font-semibold text-white">🐾 {safari}</Text>
+                                    </TouchableOpacity>
                                 ))}
-                            </ScrollView>
-                        )}
+                            </View>
+                            <Image
+                                source={require("../assets/tiger/tigers.jpg")}
+                                style={{ width: screenWidth * 0.45, height: 200, borderRadius: 10 }}
+                                resizeMode="cover"
+                            />
+                        </View>
 
-                        <TouchableOpacity
-                            onPress={() => setModalVisible(false)}
-                            className="mt-4 bg-yellow-500 px-6 py-2 rounded-full"
-                        >
-                            <Text className="text-white font-bold">Close</Text>
-                        </TouchableOpacity>
-                    </View>
-                </Modal>
-            </View>
-        </ImageBackground>
+                        <View className="bg-yellow-100/90 p-4 rounded-lg mt-8">
+                            <Text className="text-xl font-bold text-orange-800 mb-2">🌿 Ranthambore Special</Text>
+                            <Text className="text-gray-900 text-base text-justify">
+                                Famous for its Bengal Tigers and historic fort...
+                            </Text>
+                        </View>
+
+                        <View className="items-center space-y-4 mt-6">
+                            <Text className="text-xl font-bold text-yellow-300">A Glimpse into the Wild</Text>
+                            <View className="flex-row items-start space-x-4">
+                                <Image source={require("../assets/tiger/tiger1.jpg")} style={{ width: 300, height: 300, borderRadius: 12 }} />
+                                <Text className="text-black text-sm p-4 bg-white/80 rounded-xl w-[300px] text-justify">
+                                    “Every roar echoes through the forest...”
+                                    {"\n"}
+                                    “Whispers of the jungle dance in the wind…”
+                                    {"\n"}
+                                    “Each paw print tells a tale of the untamed…”
+                                    {"\n"}
+                                    “The heartbeat of the wild pulses beneath the trees…”
+                                    {"\n"}
+                                    “Sunlight filters through leaves, casting shadows of legends…”
+                                    {"\n"}
+                                    “Nature watches, ancient and alive…”
+                                    {"\n"}
+                                    “Eyes in the dark, fierce and knowing…"
+                                    {"\n"}
+                                    “The jungle breathes in rhythm with the wild…”
+                                </Text>
+                                <Image source={require("../assets/tiger/tiger12.jpg")} style={{ width: 300, height: 300, borderRadius: 12 }} />
+                            </View>
+                        </View>
+                    </ScrollView>
+
+                    {/* Modal */}
+                    <Modal
+                        visible={modalVisible}
+                        transparent
+                        animationType="slide"
+                        onRequestClose={() => setModalVisible(false)}
+                    >
+                        <View className="flex-1 bg-black/90 items-center justify-center p-4">
+                            <Text className="text-xl font-bold text-white mb-2">{selectedSafari}</Text>
+
+                            {selectedSafari && safariDetails[selectedSafari] && (
+                                <ScrollView className="bg-white/90 p-4 rounded-xl w-full max-h-[70%] mb-3">
+                                    <Text className="text-black font-semibold text-base mb-1">🗺️ Zone Details:</Text>
+                                    <Text className="text-black text-sm leading-6">{safariDetails[selectedSafari].zones}</Text>
+
+                                    <Text className="mt-3 text-black font-semibold">🌅 Morning Safari:</Text>
+                                    <Text className="text-black text-sm">{safariDetails[selectedSafari].timings.morning}</Text>
+
+                                    <Text className="mt-2 text-black font-semibold">🌇 Evening Safari:</Text>
+                                    <Text className="text-black text-sm">{safariDetails[selectedSafari].timings.evening}</Text>
+                                </ScrollView>
+                            )}
+
+                            {selectedSafari && safariData[selectedSafari] && (
+                                <ScrollView horizontal className="mt-2 space-x-3 max-h-[200px]">
+                                    {safariData[selectedSafari].map((img, idx) => (
+                                        <Image
+                                            key={idx}
+                                            source={img}
+                                            style={{ width: 200, height: 200, borderRadius: 10 }}
+                                            resizeMode="cover"
+                                        />
+                                    ))}
+                                </ScrollView>
+                            )}
+
+                            <TouchableOpacity
+                                onPress={() => setModalVisible(false)}
+                                className="mt-4 bg-yellow-500 px-6 py-2 rounded-full"
+                            >
+                                <Text className="text-white font-bold">Close</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </Modal>
+                </View>
+            </ImageBackground>
+        </View >
     );
 }

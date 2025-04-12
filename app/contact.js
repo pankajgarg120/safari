@@ -87,13 +87,13 @@ export default function ContactPage() {
     return (
         <ImageBackground
             source={require("../assets/tiger.jpg")}
-            resizeMode="cover"
-            className="flex-1"
+            resizeMode="center"
+            style={{ flex: 1 }}
         >
             {/* ✅ FIXED Social Handles - Stays in corner */}
             {Platform.OS === "web" && (
-                <View className="absolute top-1/2 -translate-y-1/2 right-4 z-50 space-y-3 items-center">
-                    <TouchableOpacity onPress={() => window.open("https://wa.me/919999999999", "_blank")}>
+                <View className="absolute top-1/2 -translate-y-1/2 right-4 z-50 space-y-3 items-center pr-9">
+                    <TouchableOpacity onPress={() => window.open("https://wa.me/message/3BILLTLVGYCSJ1", "_blank")}>
                         <Image
                             source={require("../assets/icons/whatsapp.png")}
                             className="w-6 h-6 rounded-full shadow-md hover:scale-110 transition-transform duration-200"
@@ -105,7 +105,7 @@ export default function ContactPage() {
                             className="w-6 h-6 rounded-full shadow-md hover:scale-110 transition-transform duration-200"
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => window.open("https://facebook.com/yourpage", "_blank")}>
+                    <TouchableOpacity onPress={() => window.open("https://www.facebook.com/share/16S6JJGNyv/", "_blank")}>
                         <Image
                             source={require("../assets/icons/facebook.png")}
                             className="w-6 h-6 rounded-full shadow-md hover:scale-110 transition-transform duration-200"
@@ -114,7 +114,7 @@ export default function ContactPage() {
                 </View>
             )}
 
-            <ScrollView contentContainerStyle={{ alignItems: "center", paddingBottom: 40 }} className="flex-1">
+            <ScrollView contentContainerStyle={{ alignItems: "center", paddingBottom: 10 }} style={{ flex: 1 }}>
                 <View className="w-full px-4 pt-24 max-w-md bg-white/80 rounded-xl">
                     <Text className="text-2xl font-extrabold text-green-800 text-center mb-6">
                         Contact Us
@@ -125,7 +125,7 @@ export default function ContactPage() {
                         value={name}
                         onChangeText={setName}
                         placeholder="Enter your name"
-                        className="border border-gray-300 rounded-lg px-4 py-2 mb-4"
+                        className="border border-gray-600 rounded-lg px-4 py-2 mb-4"
                     />
 
                     <Text className="text-gray-700 font-semibold mb-1">Mobile Number *</Text>
@@ -134,7 +134,7 @@ export default function ContactPage() {
                         onChangeText={setMobile}
                         placeholder="Enter your mobile number"
                         keyboardType="phone-pad"
-                        className="border border-gray-300 rounded-lg px-4 py-2 mb-4"
+                        className="border border-gray-600 rounded-lg px-4 py-2 mb-4"
                     />
 
                     <Text className="text-gray-700 font-semibold mb-1">Email</Text>
@@ -143,7 +143,7 @@ export default function ContactPage() {
                         onChangeText={setEmail}
                         placeholder="Enter your email"
                         keyboardType="email-address"
-                        className="border border-gray-300 rounded-lg px-4 py-2 mb-4"
+                        className="border border-gray-600 rounded-lg px-4 py-2 mb-4"
                     />
 
                     {/* Safari Section */}
@@ -204,7 +204,7 @@ export default function ContactPage() {
                         placeholder="Write anything you'd like to mention"
                         multiline
                         numberOfLines={4}
-                        className="border border-gray-300 rounded-lg px-4 py-2 mb-4"
+                        className="border border-gray-600 rounded-lg px-4 py-2 mb-4"
                     />
 
                     {/* Submit Button */}

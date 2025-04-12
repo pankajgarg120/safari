@@ -2,7 +2,31 @@ import React from "react";
 import { View, Text, Image, ScrollView, ImageBackground, Dimensions } from "react-native";
 import Swiper from "react-native-swiper";
 
-const { width } = Dimensions.get("window");
+
+const { width: screenWidth } = Dimensions.get("window");
+const imageHeight = screenWidth * 0.5625; // 16:9 ratio
+
+// ✅ Manual image map (Static imports)
+const hotelImages = {
+    hotel1: [
+        require("../assets/hotel/hotel11.jpg"),
+        require("../assets/hotel/hotel12.jpg"),
+        require("../assets/hotel/hotel13.jpg"),
+        require("../assets/hotel/hotel14.jpg"),
+    ],
+    hotel2: [
+        require("../assets/hotel/hotel21.jpg"),
+        require("../assets/hotel/hotel22.jpg"),
+        require("../assets/hotel/hotel23.jpg"),
+        require("../assets/hotel/hotel24.jpg"),
+    ],
+    hotel3: [
+        require("../assets/hotel/hotel31.jpg"),
+        require("../assets/hotel/hotel32.jpg"),
+        require("../assets/hotel/hotel33.jpg"),
+        require("../assets/hotel/hotel34.jpg"),
+    ],
+};
 
 export default function HotelsPage() {
     return (
@@ -22,13 +46,22 @@ export default function HotelsPage() {
 
                 <View className="space-y-8">
 
-                    {/* Hotel 1 - 3 Star */}
+                    {/* Hotel 1 */}
                     <View className="bg-gray-100 rounded-xl shadow-lg overflow-hidden">
-                        <Swiper showsPagination={true} height={400} autoplay autoplayTimeout={7.5}>
-                            <Image source={require("../assets/hotel/hotel11.jpg")} className="w-full h-48" style={{ width }} />
-                            <Image source={require("../assets/hotel/hotel12.jpg")} className="w-full h-48" style={{ width }} />
-                            <Image source={require("../assets/hotel/hotel13.jpg")} className="w-full h-48" style={{ width }} />
-                            <Image source={require("../assets/hotel/hotel14.jpg")} className="w-full h-48" style={{ width }} />
+                        <Swiper showsPagination={true} autoplay autoplayTimeout={7.5} style={{ height: imageHeight }}>
+                            {hotelImages.hotel1.map((imgSrc, idx) => (
+                                <Image
+                                    key={idx}
+                                    source={imgSrc}
+                                    style={{
+                                        width: screenWidth - 48,
+                                        height: imageHeight,
+                                        alignSelf: 'center',
+                                        borderRadius: 12,
+                                    }}
+                                    resizeMode="cover"
+                                />
+                            ))}
                         </Swiper>
                         <View className="p-4">
                             <Text className="text-xl font-bold text-green-700">Forest Edge Retreat (3-Star)</Text>
@@ -36,13 +69,22 @@ export default function HotelsPage() {
                         </View>
                     </View>
 
-                    {/* Hotel 2 - 4 Star */}
+                    {/* Hotel 2 */}
                     <View className="bg-gray-100 rounded-xl shadow-lg overflow-hidden">
-                        <Swiper showsPagination={true} height={400} autoplay autoplayTimeout={7.5}>
-                            <Image source={require("../assets/hotel/hotel21.jpg")} className="w-full h-48" style={{ width }} />
-                            <Image source={require("../assets/hotel/hotel22.jpg")} className="w-full h-48" style={{ width }} />
-                            <Image source={require("../assets/hotel/hotel23.jpg")} className="w-full h-48" style={{ width }} />
-                            <Image source={require("../assets/hotel/hotel24.jpg")} className="w-full h-48" style={{ width }} />
+                        <Swiper showsPagination={true} autoplay autoplayTimeout={7.5} style={{ height: imageHeight }}>
+                            {hotelImages.hotel2.map((imgSrc, idx) => (
+                                <Image
+                                    key={idx}
+                                    source={imgSrc}
+                                    style={{
+                                        width: screenWidth - 48,
+                                        height: imageHeight,
+                                        alignSelf: 'center',
+                                        borderRadius: 12,
+                                    }}
+                                    resizeMode="cover"
+                                />
+                            ))}
                         </Swiper>
                         <View className="p-4">
                             <Text className="text-xl font-bold text-green-700">Jungle Stay Palace (4-Star)</Text>
@@ -50,13 +92,22 @@ export default function HotelsPage() {
                         </View>
                     </View>
 
-                    {/* Hotel 3 - 5 Star */}
+                    {/* Hotel 3 */}
                     <View className="bg-gray-100 rounded-xl shadow-lg overflow-hidden">
-                        <Swiper showsPagination={true} height={400} autoplay autoplayTimeout={7.5}>
-                            <Image source={require("../assets/hotel/hotel31.jpg")} className="w-full h-48" style={{ width }} />
-                            <Image source={require("../assets/hotel/hotel32.jpg")} className="w-full h-48" style={{ width }} />
-                            <Image source={require("../assets/hotel/hotel33.jpg")} className="w-full h-48" style={{ width }} />
-                            <Image source={require("../assets/hotel/hotel34.jpg")} className="w-full h-48" style={{ width }} />
+                        <Swiper showsPagination={true} autoplay autoplayTimeout={7.5} style={{ height: imageHeight }}>
+                            {hotelImages.hotel3.map((imgSrc, idx) => (
+                                <Image
+                                    key={idx}
+                                    source={imgSrc}
+                                    style={{
+                                        width: screenWidth - 48,
+                                        height: imageHeight,
+                                        alignSelf: 'center',
+                                        borderRadius: 12,
+                                    }}
+                                    resizeMode="cover"
+                                />
+                            ))}
                         </Swiper>
                         <View className="p-4">
                             <Text className="text-xl font-bold text-green-700">The Royal Canopy (5-Star)</Text>
